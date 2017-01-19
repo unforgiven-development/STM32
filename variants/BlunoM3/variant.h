@@ -58,48 +58,47 @@ extern "C"{
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (38u)
+#define PINS_COUNT				(38u)
 
 // LEDs
-#define PIN_LED_13           (13u)
-#define PIN_LED_RXL          -1//(72u)
-#define PIN_LED_TXL          -1//(73u)
-#define PIN_LED              PIN_LED_13
-#define PIN_LED2             PIN_LED_RXL
-#define PIN_LED3             PIN_LED_TXL
+#define PIN_LED_13				(13u)
+#define PIN_LED_RXL				-1	//(72u)
+#define PIN_LED_TXL				-1	//(73u)
+#define PIN_LED					PIN_LED_13
+#define PIN_LED2				PIN_LED_RXL
+#define PIN_LED3				PIN_LED_TXL
 
 /*
  * SPI Interfaces
  */
-#define SPI_INTERFACES_COUNT 2   // stm32 privide two SPI interfaces;
+#define SPI_INTERFACES_COUNT	2	// stm32 privide two SPI interfaces;
 
-#define SPI_INTERFACE        STM32_SPI1
-#define SPI_INTERFACE_ID     -1//ID_SPI0
-#define SPI_CHANNELS_NUM -1//4
-//NSS use software control
-#define PIN_SPI_SS0          -1//(59u)
-#define PIN_SPI_SS1          -1//(60u)
-#define PIN_SPI_SS2          -1//(61u)
-#define PIN_SPI_SS3          -1//(62u)
-#define PIN_SPI_MOSI         (11u) 
-#define PIN_SPI_MISO         (12u)
-#define PIN_SPI_SCK          (13u)
-#define BOARD_SPI_SS0        -1//(59u)
-#define BOARD_SPI_SS1        -1//(60u)
-#define BOARD_SPI_SS2        -1//(61u)
-#define BOARD_SPI_SS3        -1//PIN_SPI_SS3
-#define BOARD_SPI_DEFAULT_SS -1//BOARD_SPI_SS3
+#define SPI_INTERFACE			STM32_SPI1
+#define SPI_INTERFACE_ID		-1	//ID_SPI0
+#define SPI_CHANNELS_NUM		-1	//4
+// NSS use software control
+#define PIN_SPI_SS0				-1	//(59u)
+#define PIN_SPI_SS1				-1	//(60u)
+#define PIN_SPI_SS2				-1	//(61u)
+#define PIN_SPI_SS3				-1	//(62u)
+#define PIN_SPI_MOSI			(11u) 
+#define PIN_SPI_MISO			(12u)
+#define PIN_SPI_SCK				(13u)
+#define BOARD_SPI_SS0			-1	//(59u)
+#define BOARD_SPI_SS1			-1	//(60u)
+#define BOARD_SPI_SS2			-1	//(61u)
+#define BOARD_SPI_SS3			-1	//PIN_SPI_SS3
+#define BOARD_SPI_DEFAULT_SS	-1	//BOARD_SPI_SS3
 
+#define SPI_INTERFACE1			SPI2
+#define PIN_SPI_MOSI1			(34u)
+#define PIN_SPI_MISO1			(33u)
+#define PIN_SPI_SCK1			(32u)
 
-#define SPI_INTERFACE1        SPI2
-#define PIN_SPI_MOSI1        (34u) 
-#define PIN_SPI_MISO1        (33u) 
-#define PIN_SPI_SCK1          (32u) 
-
-#define SPI_INTERFACE2        SPI3
-#define PIN_SPI_MOSI2         (8u)
-#define PIN_SPI_MISO2         (7u)
-#define PIN_SPI_SCK2          (6u)
+#define SPI_INTERFACE2			SPI3
+#define PIN_SPI_MOSI2			(8u)
+#define PIN_SPI_MISO2			(7u)
+#define PIN_SPI_SCK2			(6u)
 
 
 #define BOARD_PIN_TO_SPI_PIN(x) \
@@ -130,27 +129,27 @@ static const uint8_t SCK2  = PIN_SPI_SCK2;
 /*
  * Wire Interfaces
  */
-#define WIRE_INTERFACES_COUNT 2
+#define WIRE_INTERFACES_COUNT	2
 
-#define PIN_WIRE_SDA         (9u)
-#define PIN_WIRE_SCL         (5u)
-#define WIRE_INTERFACE       I2C1
-#define WIRE_INTERFACE_ID    ID_TWI1
-#define WIRE_ISR_HANDLER     I2C1_EV_IRQHandler
+#define PIN_WIRE_SDA			(9u)
+#define PIN_WIRE_SCL			(5u)
+#define WIRE_INTERFACE			I2C1
+#define WIRE_INTERFACE_ID		ID_TWI1
+#define WIRE_ISR_HANDLER		I2C1_EV_IRQHandler
 
-#define PIN_WIRE1_SDA        (30u)
-#define PIN_WIRE1_SCL        (29u)
-#define WIRE1_INTERFACE      I2C2
-#define WIRE1_INTERFACE_ID   ID_TWI0
-#define WIRE1_ISR_HANDLER    I2C2_EV_IRQHandler
+#define PIN_WIRE1_SDA			(30u)
+#define PIN_WIRE1_SCL			(29u)
+#define WIRE1_INTERFACE			I2C2
+#define WIRE1_INTERFACE_ID		ID_TWI0
+#define WIRE1_ISR_HANDLER		I2C2_EV_IRQHandler
 
 /*
  * UART/USART Interfaces
  */
 
 // Serial1(Serial4)
-#define RX1              (0u) //PA10
-#define TX1             (1u) //PA9
+#define RX1						(0u)	//PA10
+#define TX1						(1u)	//PA9
 
 // Serial2(Serial2)
 #define RX2             (22u) //PA3
@@ -168,12 +167,6 @@ static const uint8_t SCK2  = PIN_SPI_SCK2;
 // Serial5 (Serial5)
 #define RX5              (25u) //PD2
 #define TX5              (23u) //PC12
-
-
-
-
-
-
 
 
 /*
@@ -256,8 +249,28 @@ extern USARTClass Serial3;
 extern USARTClass Serial4;
 extern USARTClass Serial5;
 
+// These serial port names are intended to allow libraries and architecture-neutral
+// sketches to automatically default to the correct port name for a particular type
+// of use.  For example, a GPS module would normally connect to SERIAL_PORT_HARDWARE_OPEN,
+// the first hardware serial port whose RX/TX pins are not dedicated to another use.
+//
+// SERIAL_PORT_MONITOR        Port which normally prints to the Arduino Serial Monitor
+//
+// SERIAL_PORT_USBVIRTUAL     Port which is USB virtual serial
+//
+// SERIAL_PORT_LINUXBRIDGE    Port which connects to a Linux system via Bridge library
+//
+// SERIAL_PORT_HARDWARE       Hardware serial port, physical RX & TX pins.
+//
+// SERIAL_PORT_HARDWARE_OPEN  Hardware serial ports which are open for use.  Their RX & TX
+//                            pins are NOT connected to anything by default.
+#define SERIAL_PORT_MONITOR			Serial1
+#define SERIAL_PORT_HARDWARE		Serial1
+#define SERIAL_PORT_HARDWARE_OPEN	Serial2
+
+// Alias Serial to Serial1
+#define Serial						Serial1
 
 #endif
 
 #endif /* _VARIANT_MAKERLAB_SUN_ */
-
